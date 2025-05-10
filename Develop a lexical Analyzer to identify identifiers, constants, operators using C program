@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char s[100] = "w=x*y+z-r+20";
+    int i = 0;
+    printf("Identifiers: ");
+    while (s[i] != '\0') 
+    {
+        if (isalpha(s[i])) 
+        {
+            printf("%c ", s[i]);
+        }
+        i++;
+    }
+    i = 0;
+    printf("\nConstants: ");
+    while (s[i] != '\0') 
+    {
+        if (isdigit(s[i])) 
+        {
+            printf("%c", s[i]);
+        }
+        i++;
+    }
+    i = 0;
+    printf("\nOperators: ");
+    while (s[i] != '\0') {
+        if (s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '=' || s[i] == '*') 
+        {
+            printf("%c ", s[i]);
+        }
+        i++;
+    }
+    return 0;
+}
