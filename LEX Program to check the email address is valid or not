@@ -1,0 +1,29 @@
+//Lex Program
+
+%{
+#include <stdio.h>
+int flag = 0;
+%}
+
+%%
+[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|in) { flag = 1; }
+.|\n                                 { /* ignore other input */ }
+%%
+
+int yywrap() {
+    return 1;
+}
+
+int main() {
+    printf("Enter input (email or text):\n");
+    yylex();
+    if (flag == 1)
+        printf("Accepted\n");
+    else
+        printf("Not Accepted\n");
+    return 0;
+}
+
+//Input:hello@example.com
+//Out Put:Accepted
+
