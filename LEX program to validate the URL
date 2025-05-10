@@ -1,0 +1,26 @@
+//Lex Program
+
+%% 
+((http|ftp)s?:\/\/[a-zA-Z0-9-]+\.[a-zA-Z]{2,})(\/[a-zA-Z0-9&?=_.-]*)* {
+    printf("\nURL Valid\n");
+} 
+
+.|\n { 
+    printf("\nURL Invalid\n");
+}
+
+%% 
+
+void main() { 
+    printf("\nEnter URL: ");
+    yylex();
+    printf("\n"); 
+}
+
+int yywrap() { 
+    return 1; 
+}
+
+//Input:Enter URL: https://www.example.com
+//Out Put:URL Valid
+
