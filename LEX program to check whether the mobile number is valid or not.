@@ -1,0 +1,28 @@
+//Lex Program
+
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[1-9][0-9]{9}     { printf("\nMobile Number Valid\n"); }
+
+.+                { printf("\nMobile Number Invalid\n"); }
+
+\n                { /* Ignore newline */ }
+
+%%
+
+int main() {
+    printf("Enter Mobile Number: ");
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
+
+//Input:Enter Mobile Number: 9876543210
+//Out Put:Mobile Number Valid
