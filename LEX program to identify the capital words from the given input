@@ -1,0 +1,33 @@
+//Lex Program
+
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[A-Z]+[\t\n ]    { printf("%s is a capital word\n", yytext); }
+
+.                ; // Ignore all other characters
+
+%%
+
+int main() {
+    printf("Enter String:\n");
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
+
+//Input String:HELLO there THIS is A TEST FILE
+
+//Out Put:
+HELLO  is a capital word
+THIS  is a capital word
+A  is a capital word
+TEST  is a capital word
+FILE
+ is a capital word
